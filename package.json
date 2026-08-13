@@ -1,0 +1,19 @@
+{
+  "name": "tree-sitter-ulb",
+  "version": "0.1.0",
+  "description": "tree-sitter grammar for the ulb build DSL (see GRAMMAR.md)",
+  "main": "bindings/node",
+  "license": "MIT",
+  "scripts": {
+    "generate": "tree-sitter generate",
+    "test": "tree-sitter test",
+    "parse": "tree-sitter parse",
+    "build": "tree-sitter generate && tree-sitter build"
+  },
+  "devDependencies": {
+    "tree-sitter-cli": "^0.26.12"
+  },
+  "allowScripts": {
+    "tree-sitter-cli@0.26.12": true
+  }
+}

@@ -1,0 +1,93 @@
+==================
+Convention definition
+==================
+
+convention androidBase {
+  compileSdk 37
+}
+
+---
+
+(source_file
+  (statement
+    (def_statement
+      (convention_def
+        (identifier)
+        (block
+          (statement
+            (pair_statement
+              (path (identifier))
+              (primary (number)))))))))
+
+==================
+Convention with control flow
+==================
+
+convention releaseBase {
+  if releaseBuild {
+    minifyEnabled true
+  } else {
+    minifyEnabled false
+  }
+}
+
+---
+
+(source_file
+  (statement
+    (def_statement
+      (convention_def
+        (identifier)
+        (block
+          (statement
+            (if_statement
+              condition: (primary (path (identifier)))
+              consequence: (block
+                (statement
+                  (pair_statement
+                    (path (identifier))
+                    (primary (boolean)))))
+              alternative: (block
+                (statement
+                  (pair_statement
+                    (path (identifier))
+                    (primary (boolean))))))))))))
+
+==================
+Function definition with no parameters
+==================
+
+fn computeBuildConfig() {
+}
+
+---
+
+(source_file
+  (statement
+    (def_statement
+      (fn_def
+        (identifier)
+        (block)))))
+
+==================
+Function definition with parameters
+==================
+
+fn releaseConfig(releaseType, versionName) {
+  versionCode 1
+}
+
+---
+
+(source_file
+  (statement
+    (def_statement
+      (fn_def
+        (identifier)
+        (identifier)
+        (identifier)
+        (block
+          (statement
+            (pair_statement
+              (path (identifier))
+              (primary (number)))))))))

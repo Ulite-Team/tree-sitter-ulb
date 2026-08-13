@@ -1,0 +1,186 @@
+==================
+Comparison operators
+==================
+
+x a == b
+y a != b
+z a < b
+w a <= b
+v a > b
+u a >= b
+
+---
+
+(source_file
+  (statement
+    (pair_statement
+      (path (identifier))
+      (primary (path (identifier)))
+      (primary (path (identifier)))))
+  (statement
+    (pair_statement
+      (path (identifier))
+      (primary (path (identifier)))
+      (primary (path (identifier)))))
+  (statement
+    (pair_statement
+      (path (identifier))
+      (primary (path (identifier)))
+      (primary (path (identifier)))))
+  (statement
+    (pair_statement
+      (path (identifier))
+      (primary (path (identifier)))
+      (primary (path (identifier)))))
+  (statement
+    (pair_statement
+      (path (identifier))
+      (primary (path (identifier)))
+      (primary (path (identifier)))))
+  (statement
+    (pair_statement
+      (path (identifier))
+      (primary (path (identifier)))
+      (primary (path (identifier))))))
+
+==================
+Logical operators
+==================
+
+x a || b && !c
+
+---
+
+(source_file
+  (statement
+    (pair_statement
+      (path (identifier))
+      (primary (path (identifier)))
+      (primary (path (identifier)))
+      (primary (path (identifier))))))
+
+==================
+Version attach with identifier
+==================
+
+coreKtx = "androidx.core:core-ktx" @ coreVersion
+
+---
+
+(source_file
+  (statement
+    (assignment
+      (path (identifier))
+      (primary (string))
+      version: (identifier))))
+
+==================
+Version attach with string
+==================
+
+androidApplication = "com.android.application" @ "8.7.0"
+
+---
+
+(source_file
+  (statement
+    (assignment
+      (path (identifier))
+      (primary (string))
+      version: (string))))
+
+==================
+List literal
+==================
+
+proguardFiles [ "rules.pro", "proguard-optimize.pro" ]
+
+---
+
+(source_file
+  (statement
+    (pair_statement
+      (path (identifier))
+      (primary
+        (list
+          (primary (string))
+          (primary (string)))))))
+
+==================
+Group inside list
+==================
+
+x [ (a || b), c ]
+
+---
+
+(source_file
+  (statement
+    (pair_statement
+      (path (identifier))
+      (primary
+        (list
+          (primary
+            (group
+              (primary (path (identifier)))
+              (primary (path (identifier)))))
+          (primary (path (identifier))))))))
+
+==================
+Member access on call
+==================
+
+x props("signing.properties").keyAlias
+
+---
+
+(source_file
+  (statement
+    (pair_statement
+      (path (identifier))
+      (primary
+        (member_access
+          (call
+            (identifier)
+            (arguments
+              (primary (string))))
+          (identifier))))))
+
+==================
+Call with named and positional arguments
+==================
+
+x foo(versionCode=1, 2)
+
+---
+
+(source_file
+  (statement
+    (pair_statement
+      (path (identifier))
+      (primary
+        (call
+          (identifier)
+          (arguments
+            (named_argument
+              (identifier)
+              (primary (number)))
+            (primary (number))))))))
+
+==================
+Call in expression position
+==================
+
+x env("PATH")
+
+---
+
+(source_file
+  (statement
+    (pair_statement
+      (path (identifier))
+      (primary
+        (call
+          (identifier)
+          (arguments
+            (primary (string))))))))

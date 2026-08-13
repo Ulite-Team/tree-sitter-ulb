@@ -1,0 +1,187 @@
+==================
+Reserved word as convention name
+==================
+
+convention if { }
+
+---
+
+(source_file
+  (ERROR))
+
+==================
+Reserved word as pair value
+==================
+
+x else
+
+---
+
+(source_file
+  (ERROR
+    (identifier)))
+
+==================
+Reserved word as call name
+==================
+
+x fn(y)
+
+---
+
+(source_file
+  (statement
+    (call_statement
+      (call
+        (identifier)
+        (ERROR)
+        (arguments
+          (primary (path (identifier))))))))
+
+==================
+Missing value after path
+==================
+
+versionName
+
+---
+
+(source_file
+  (statement
+    (pair_statement
+      (path (identifier))
+      (primary
+        (path
+          (MISSING identifier))))))
+
+==================
+Unterminated string
+==================
+
+x "unterminated
+
+---
+
+(source_file
+  (statement
+    (pair_statement
+      (path (identifier))
+      (primary
+        (string
+          (MISSING """))))))
+
+==================
+Unterminated block
+==================
+
+android {
+
+---
+
+(source_file
+  (statement
+    (block_statement
+      (path (identifier))
+      (block
+        (MISSING "}")))))
+
+==================
+Unterminated list
+==================
+
+x [ 1, 2
+
+---
+
+(source_file
+  (statement
+    (pair_statement
+      (path (identifier))
+      (primary
+        (list
+          (primary (number))
+          (primary (number))
+          (MISSING "]"))))))
+
+==================
+Dotted callee is not a call
+==================
+
+a.b()
+
+---
+
+(source_file
+  (statement
+    (pair_statement
+      (path (identifier) (identifier))
+      (primary
+        (group
+          (primary
+            (path
+              (MISSING identifier))))))))
+
+==================
+Dangling dot in path
+==================
+
+x a.b.
+
+---
+
+(source_file
+  (statement
+    (pair_statement
+      (path (identifier))
+      (primary
+        (path
+          (identifier)
+          (identifier)
+          (MISSING identifier))))))
+
+==================
+Negative number is not expressible
+==================
+
+x -1
+
+---
+
+(source_file
+  (statement
+    (pair_statement
+      (path (identifier))
+      (ERROR
+        (UNEXPECTED '-'))
+      (primary (number)))))
+
+==================
+Scientific notation is not a number
+==================
+
+x 1e3
+
+---
+
+(source_file
+  (statement
+    (pair_statement
+      (path (identifier))
+      (primary (number))))
+  (ERROR
+    (identifier)))
+
+==================
+Reserved word mid-statement recovers
+==================
+
+x if y
+
+---
+
+(source_file
+  (statement
+    (pair_statement
+      (path (identifier))
+      (ERROR)
+      (primary (path (identifier))))))

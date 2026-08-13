@@ -1,0 +1,36 @@
+{
+  "grammars": [
+    {
+      "name": "ulb",
+      "camelcase": "ULB",
+      "scope": "source.ulb",
+      "path": ".",
+      "file-types": ["ulb"],
+      "highlights": "highlights.scm",
+      "folds": "folds.scm",
+      "indents": "indents.scm",
+      "injection-regex": "ulb"
+    }
+  ],
+  "metadata": {
+    "version": "0.1.0",
+    "license": "MIT",
+    "description": "tree-sitter grammar for the ulb build DSL (see GRAMMAR.md)",
+    "authors": [
+      {
+        "name": "Ulite Team"
+      }
+    ]
+  },
+  "bindings": {
+    "c": true,
+    "go": false,
+    "node": true,
+    "python": false,
+    "rust": true,
+    "swift": false
+  },
+  "generate": {
+    "abi": 15
+  }
+}
