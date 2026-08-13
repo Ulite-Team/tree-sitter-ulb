@@ -12,7 +12,7 @@ convention androidBase {
   (statement
     (def_statement
       (convention_def
-        (identifier)
+        name: (identifier)
         (block
           (statement
             (pair_statement
@@ -37,7 +37,7 @@ convention releaseBase {
   (statement
     (def_statement
       (convention_def
-        (identifier)
+        name: (identifier)
         (block
           (statement
             (if_statement
@@ -66,7 +66,7 @@ fn computeBuildConfig() {
   (statement
     (def_statement
       (fn_def
-        (identifier)
+        name: (identifier)
         (block)))))
 
 ==================
@@ -83,7 +83,7 @@ fn releaseConfig(releaseType, versionName) {
   (statement
     (def_statement
       (fn_def
-        (identifier)
+        name: (identifier)
         (identifier)
         (identifier)
         (block

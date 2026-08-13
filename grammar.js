@@ -83,12 +83,13 @@ module.exports = grammar({
 
     def_statement: ($) => choice($.convention_def, $.fn_def, $.task_def),
 
-    convention_def: ($) => seq('convention', $.identifier, $.block),
+    convention_def: ($) =>
+      seq('convention', field('name', $.identifier), $.block),
 
     fn_def: ($) =>
       seq(
         'fn',
-        $.identifier,
+        field('name', $.identifier),
         '(',
         optional(seq($.identifier, repeat(seq(',', $.identifier)))),
         ')',

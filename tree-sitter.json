@@ -6,9 +6,9 @@
       "scope": "source.ulb",
       "path": ".",
       "file-types": ["ulb"],
-      "highlights": "highlights.scm",
-      "folds": "folds.scm",
-      "indents": "indents.scm",
+      "highlights": "queries/highlights.scm",
+      "folds": "queries/folds.scm",
+      "indents": "queries/indents.scm",
       "injection-regex": "ulb"
     }
   ],
