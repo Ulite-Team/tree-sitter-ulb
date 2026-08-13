@@ -13,6 +13,13 @@
 module.exports = grammar({
   name: 'ulb',
 
+  // Comments are extras (allowed between any two tokens), but with a
+  // negative precedence so a `//` or `/*` sequence *inside* a string
+  // lexes as string content instead: at an adjacent position the
+  // single-character `_string_fragment` (precedence 0) beats the longer
+  // comment token, while the `${` interpolation opener still wins over a
+  // lone `$` fragment on longest match. Outside strings nothing competes,
+  // so comments lex normally.
   extras: ($) => [/\s/, $.comment],
 
   word: ($) => $.identifier,
@@ -180,8 +187,9 @@ module.exports = grammar({
 
     comment: ($) => choice($.line_comment, $.block_comment),
 
-    line_comment: ($) => token(seq('//', /[^\n]*/)),
+    line_comment: ($) => token(prec(-1, seq('//', /[^\n]*/))),
 
-    block_comment: ($) => token(seq('/*', /[^*]*\*+(?:[^/*][^*]*\*+)*\//)),
+    block_comment: ($) =>
+      token(prec(-1, seq('/*', /[^*]*\*+(?:[^/*][^*]*\*+)*\//))),
   },
 });

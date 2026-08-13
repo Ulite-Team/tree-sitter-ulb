@@ -13,6 +13,42 @@ x "a\nb\t\"q\""
       (primary (string)))))
 
 ==================
+String containing comment delimiters
+==================
+
+x "https://maven.example/repo"
+y "a/*b*/c"
+
+---
+
+(source_file
+  (statement
+    (pair_statement
+      (path (identifier))
+      (primary (string))))
+  (statement
+    (pair_statement
+      (path (identifier))
+      (primary (string)))))
+
+==================
+String with interpolation and comment delimiter
+==================
+
+x "v${w}x//y"
+
+---
+
+(source_file
+  (statement
+    (pair_statement
+      (path (identifier))
+      (primary
+        (string
+          (interpolation
+            value: (primary (path (identifier)))))))))
+
+==================
 String with interpolation
 ==================
 
