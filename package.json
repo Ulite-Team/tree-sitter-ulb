@@ -3,7 +3,7 @@
   "version": "0.1.0",
   "description": "tree-sitter grammar for the ulb build DSL (see GRAMMAR.md)",
   "main": "bindings/node",
-  "license": "MIT",
+  "license": "GPL-3.0",
   "scripts": {
     "generate": "tree-sitter generate",
     "test": "tree-sitter test",
