@@ -14,8 +14,8 @@
   ],
   "metadata": {
     "version": "0.1.0",
-    "license": "MIT",
-    "description": "tree-sitter grammar for the ulb build DSL (see GRAMMAR.md)",
+    "license": "GPL-3.0",
+    "description": "tree-sitter grammar for the ulb build DSL (see docs/grammar.md)",
     "authors": [
       {
         "name": "Ulite Team"

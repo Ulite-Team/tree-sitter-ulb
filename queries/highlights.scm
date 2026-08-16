@@ -1,6 +1,6 @@
 ; Highlights for the ulb build DSL.
 ;
-; GRAMMAR.md §4: reserved words are keyword tokens, contextual identifiers
+; docs/grammar.md §4: reserved words are keyword tokens, contextual identifiers
 ; are plain `identifier` nodes. The contextual ones get their role from
 ; their position in the tree — the path leading a `block_statement` is a
 ; section, the path leading a `pair_statement` is a config key, the target
@@ -64,13 +64,13 @@
 ((call . (identifier) @function.builtin)
   (#match? @function.builtin "^(env|props|ver|copy|exec)$"))
 
-; `props("path").key` member segments (GRAMMAR.md §5.2).
+; `props("path").key` member segments (docs/grammar.md §5.2).
 (member_access "." (identifier) @property)
 
 ; `exec(command="...", args=[...])` named-argument names.
 (named_argument . (identifier) @variable.parameter)
 
-; --- contextual identifiers by position (GRAMMAR.md §4) ---------------
+; --- contextual identifiers by position (docs/grammar.md §4) ---------------
 
 ; Block targets: `android {}`, `<sourceSet>.deps {}`, `versions {}`, ...
 (block_statement (path (identifier) @type))

@@ -1,7 +1,7 @@
 {
   "name": "tree-sitter-ulb",
   "version": "0.1.0",
-  "description": "tree-sitter grammar for the ulb build DSL (see GRAMMAR.md)",
+  "description": "tree-sitter grammar for the ulb build DSL (see docs/grammar.md)",
   "main": "bindings/node",
   "license": "GPL-3.0",
   "scripts": {

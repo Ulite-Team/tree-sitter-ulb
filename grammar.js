@@ -1,8 +1,8 @@
 /**
  * tree-sitter grammar for the ulb build DSL.
  *
- * Mirrors GRAMMAR.md §5 (EBNF) one rule per non-terminal, per the
- * portability notes in GRAMMAR.md §8. Statement dispatch follows §5.1:
+ * Mirrors docs/grammar.md §5 (EBNF) one rule per non-terminal, per the
+ * portability notes in docs/grammar.md §8. Statement dispatch follows §5.1:
  * every IDENT-starting statement is read as a `path` first, then decided
  * by the next token (`{` block, `=` assignment, `(` call, else pair).
  * Reserved words (§4) are anonymous tokens so they can never parse as
@@ -111,7 +111,7 @@ module.exports = grammar({
     // -- call --------------------------------------------------------
 
     // `IDENT (` after a single-segment path is a call, never a pair whose
-    // value happens to be a call/group; GRAMMAR.md §5.1 dispatches the
+    // value happens to be a call/group; docs/grammar.md §5.1 dispatches the
     // same way. The precedence bump on `call` resolves that overlap both
     // at statement level (call_statement vs pair_statement) and inside
     // expressions (call vs a bare `path`).
@@ -126,7 +126,7 @@ module.exports = grammar({
 
     named_argument: ($) => seq($.identifier, '=', $._expression),
 
-    // `props("path").key` — the only legal member access (GRAMMAR.md
+    // `props("path").key` — the only legal member access (docs/grammar.md
     // §5.2). Requires at least one member so a bare call stays a `call`.
     member_access: ($) => seq($.call, repeat1(seq('.', $.identifier))),
 

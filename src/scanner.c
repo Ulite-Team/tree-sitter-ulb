@@ -2,13 +2,13 @@
  * External scanner for the ulb grammar.
  *
  * Identifiers and the reserved words (`if else true false convention fn
- * task apply`, GRAMMAR.md §4) are lexed here instead of by the generated
+ * task apply`, docs/grammar.md §4) are lexed here instead of by the generated
  * lexer so that a reserved word is recognized in *every* parse state.
  * The generated lexer only consults a keyword token in states where the
  * grammar rules make that keyword valid; anywhere else the same text
  * would fall back to the identifier regex and parse as a plain name.
  * Returning the keyword token unconditionally turns such a use into a
- * parse error, which is what GRAMMAR.md §4 requires ("cannot appear as
+ * parse error, which is what docs/grammar.md §4 requires ("cannot appear as
  * IDENT; error if used as one").
  *
  * The scanner is invoked once per token position, *before* the runtime

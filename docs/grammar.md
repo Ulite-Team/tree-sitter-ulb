@@ -1,4 +1,4 @@
-# ulb Language Grammar (GRAMMAR.md)
+# ulb Language Grammar (grammar.md)
 
 Authoritative grammar for the **ulb** build DSL (Uliab Build). This document
 is the single source of truth for the language: the hand-written recursive-
@@ -460,7 +460,7 @@ the grammar small enough for a day-one LSP:
    current token or a one-token lookahead, which is GLR-friendly.
 
 The `grammar.js` is maintained by hand against this document and the
-sync-by-hand risk is tracked in ARCHITECTURE.md §11.
+sync-by-hand risk is tracked in Uliab/docs/architecture.md §11.
 
 ---
 
@@ -568,7 +568,7 @@ Named blocks (`debug`, `release`, or custom). Keys:
 
 The variant matrix is the cartesian product of build types × flavors; a
 variant is *valid* only if it contains exactly one flavor per dimension
-(see ARCHITECTURE.md §4).
+(see Uliab/docs/architecture.md §4).
 
 ### `signing { ... }`
 
